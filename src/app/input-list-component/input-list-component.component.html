@@ -1,0 +1,65 @@
+<div class="mt-2 row">
+  <div class="d-flex" cdkDropListGroup>
+    <div class="col-6">
+      <div
+        cdkDropList
+        [cdkDropListEnterPredicate]="noReturnPredicate"
+        (cdkDropListExited)="onSourceListExited($event)"
+        (cdkDropListEntered)="onSourceListEntered($event)"
+        cdkDropListSortingDisabled
+        [cdkDropListData]="inputTypes"
+        class="draggable-lists"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          cdkDrag
+          *ngFor="let item of inputTypes"
+          (cdkDragEntered)="onCdkDragEntered($event)"
+          (cdkDragReleased)="foo($event)"
+          class="mb-2"
+        >
+          <ng-template #itemTpl>
+            <mat-card class="form-card">
+              {{ item }}
+            </mat-card>
+          </ng-template>
+          <div *cdkDragPlaceholder>
+            <mat-card
+              *ngIf="draggingOutsideSourceList; else itemTpl"
+              class="customPlaceHolder mb-2"
+            ></mat-card>
+          </div>
+          <ng-container *ngTemplateOutlet="itemTpl"></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 dynamic-form">
+      <div
+        cdkDropList
+        [cdkDropListData]="dynamicForm"
+        class="draggable-lists"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          cdkDrag
+          *ngFor="let item of dynamicForm"
+          (cdkDragEntered)="onCdkDragEntered($event)"
+          class="mb-2"
+        >
+          <ng-template #itemTpl>
+            <mat-card class="form-card">
+              {{ item }}
+            </mat-card>
+          </ng-template>
+          <div *cdkDragPlaceholder>
+            <mat-card
+              *ngIf="draggingOutsideSourceList; else itemTpl"
+              class="customPlaceHolder mb-2"
+            ></mat-card>
+          </div>
+          <ng-container *ngTemplateOutlet="itemTpl"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

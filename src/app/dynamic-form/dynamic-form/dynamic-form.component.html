@@ -1,0 +1,8 @@
+<div class="form-group">
+  <form novalidate>
+    <div class="mt-2" *ngFor="let input of formInputs">
+      <div appDynamicInput [input]="input"></div>
+    </div>
+    <!-- <button type="button" class="btn btn-primary mt-2 ">Submit</button> -->
+  </form>
+</div>
