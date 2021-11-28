@@ -34,31 +34,53 @@
       </div>
     </div>
     <div class="col-6 dynamic-form">
+      <div *ngIf="dynamicForm.length === 0" class="placeholder-text">
+        <p>Drag Items Here</p>
+      </div>
       <div
         cdkDropList
         [cdkDropListData]="dynamicForm"
         class="draggable-lists"
         (cdkDropListDropped)="drop($event)"
       >
-        <div
-          cdkDrag
-          *ngFor="let item of dynamicForm"
-          (cdkDragEntered)="onCdkDragEntered($event)"
-          class="mb-2"
-        >
-          <ng-template #itemTpl>
-            <mat-card class="form-card">
-              {{ item }}
-            </mat-card>
-          </ng-template>
-          <div *cdkDragPlaceholder>
-            <mat-card
-              *ngIf="draggingOutsideSourceList; else itemTpl"
-              class="customPlaceHolder mb-2"
-            ></mat-card>
+        <mat-accordion>
+          <div
+            cdkDrag
+            *ngFor="let item of dynamicForm; let i = index"
+            (cdkDragEntered)="onCdkDragEntered($event)"
+            class="mb-2"
+          >
+            <ng-template #itemTpl>
+              <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+              >
+                <mat-expansion-panel-header>
+                  <mat-panel-title> {{ item }}</mat-panel-title>
+                  <mat-icon
+                    class="delete-icon"
+                    aria-hidden="false"
+                    aria-label="delete"
+                    (click)="$event.stopPropagation(); removeItem(i)"
+                    >delete</mat-icon
+                  >
+                </mat-expansion-panel-header>
+                <div>
+                  <app-edit-input-element
+                    [inputEl]="formInputs[i]"
+                  ></app-edit-input-element>
+                </div>
+              </mat-expansion-panel>
+            </ng-template>
+            <div *cdkDragPlaceholder>
+              <mat-card
+                *ngIf="draggingOutsideSourceList; else itemTpl"
+                class="customPlaceHolder mb-2"
+              ></mat-card>
+            </div>
+            <ng-container *ngTemplateOutlet="itemTpl"></ng-container>
           </div>
-          <ng-container *ngTemplateOutlet="itemTpl"></ng-container>
-        </div>
+        </mat-accordion>
       </div>
     </div>
   </div>

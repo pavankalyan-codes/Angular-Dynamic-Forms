@@ -10,6 +10,8 @@ export interface FormInput {
     placeholder?:string
     regex?:string;
     className?:string;
+    errorText?:string
+    textType?:string;
 }
 
 export interface option {

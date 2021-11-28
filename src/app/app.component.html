@@ -2,7 +2,11 @@
   <h1 class="mt-4 text-center">Auto Form Generator</h1>
   <div class="form row">
     <div class="col-md-8">
-      <app-input-list-component (formItemAdded)="addToForm($event)"></app-input-list-component>
+      <app-input-list-component
+        (formItemAdded)="addToForm($event)"
+        (formItemRemoved)="deleteFromForm($event)"
+        [formInputs]="dynamicForm"
+      ></app-input-list-component>
     </div>
     <div class="col-10 col-md-4">
       <app-dynamic-form [formInputs]="dynamicForm"></app-dynamic-form>

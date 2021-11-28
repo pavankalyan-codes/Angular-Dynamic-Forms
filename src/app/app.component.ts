@@ -18,7 +18,9 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Example Input text"
+      label:"Example Input text",
+      placeholder:"Hodor",
+      textType:"password",
     },
     {
       name: "test2",
@@ -26,7 +28,25 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Example Checkbox"
+      label:"Example Checkbox",
+      placeholder:"",
+      options:[
+        {
+          text:"Option 1",
+          value:"option1",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 2",
+          value:"option2",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 3",
+          value:"option3",
+          id:uuid.v4()
+        }
+      ]
     },
     {
       name: "test3",
@@ -34,7 +54,25 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:"",
+      options:[
+        {
+          text:"Option 1",
+          value:"option1",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 2",
+          value:"option2",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 3",
+          value:"option3",
+          id:uuid.v4()
+        }
+      ]
     },
     {
       name: "test4",
@@ -42,7 +80,25 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:"",
+      options:[
+        {
+          text:"Option 1",
+          value:"option1",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 2",
+          value:"option2",
+          id:uuid.v4()
+        },
+        {
+          text:"Option 3",
+          value:"option3",
+          id:uuid.v4()
+        }
+      ]
     },
     {
       name: "test5",
@@ -50,7 +106,8 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:""
     },
     {
       name: "test6",
@@ -58,7 +115,8 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:""
     },
     {
       name: "test7",
@@ -66,7 +124,8 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:""
     },
     {
       name: "test8",
@@ -74,7 +133,8 @@ export class AppComponent {
       value:"",
       isRequired:true,
       id:uuid.v4(),
-      label:"Lorem"
+      label:"Lorem",
+      placeholder:""
     }
   ];
 
@@ -83,7 +143,11 @@ export class AppComponent {
       moveItemInArray(this.dynamicForm, data.index, data.insertAt);
     }
     else{
-      this.dynamicForm.splice(data.insertAt,0,this.defaultFormValues[data.index]);
+      this.dynamicForm.splice(data.insertAt,0,{...this.defaultFormValues[data.index]});
     }
+  }
+
+  deleteFromForm(index:number){
+    this.dynamicForm.splice(index,1);
   }
 }

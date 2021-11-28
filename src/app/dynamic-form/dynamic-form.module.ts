@@ -12,6 +12,7 @@ import { InputRadioComponent } from './templates/input-radio/input-radio.compone
 import { InputCheckboxComponent } from './templates/input-checkbox/input-checkbox.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { DynamicInputDirective } from './dynamic-input.directive';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -45,7 +46,8 @@ import { DynamicInputDirective } from './dynamic-input.directive';
     DynamicInputDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule
   ]
 })
 export class DynamicFormModule { }

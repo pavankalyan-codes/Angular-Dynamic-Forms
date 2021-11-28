@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "form-placeholder.component.scss"
+    ],
+    "names": [],
+    "file": "form-placeholder.component.css"
+}

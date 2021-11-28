@@ -13,7 +13,6 @@ export class InputDateComponent extends InputTemplateBase implements OnInit  {
   }
 
   ngOnInit(): void {
-    console.log(this.input);
   }
 
 }

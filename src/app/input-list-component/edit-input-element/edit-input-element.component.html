@@ -1,0 +1,87 @@
+<form [formGroup]="inputElementFormGroup">
+  <div class="form-group mb-4">
+    <label class="mb-2">Label</label>
+    <input
+      class="form-control"
+      type="text"
+      name=""
+      formControlName="inputLabel"
+    />
+  </div>
+  <div *ngIf="showPlaceholder" class="form-group mb-4">
+    <label class="mb-2">Placeholder</label>
+    <input
+      class="form-control"
+      type="text"
+      name=""
+      formControlName="inputPlaceholder"
+    />
+  </div>
+  <div *ngIf="showTextType" class="form-group mb-4">
+    <label class="mb-2">Text Type</label>
+    <select
+      formControlName="inputTextType"
+      class="form-select"
+      id="exampleFormControlSelect1"
+    >
+      <option value="text">text</option>
+      <option value="password">password</option>
+      <option value="email">email</option>
+      <option value="number">number</option>
+    </select>
+  </div>
+  <div *ngIf="showRequired" class="form-group mb-4">
+    <mat-slide-toggle color="accent" formControlName="inputIsRequired"
+      >Required</mat-slide-toggle
+    >
+  </div>
+  <div *ngIf="showRegex" class="regex">
+    <div class="form-group mb-4">
+      <label class="mb-2">Regex</label>
+      <input class="form-control" type="text" name="" />
+    </div>
+    <div class="form-group mb-4">
+      <label class="mb-2">Error text</label>
+      <input class="form-control" type="text" name="" />
+    </div>
+  </div>
+
+  <div *ngIf="showOptions">
+    <label class="mb-2">Dropdown Options</label>
+    <div>
+      <div formArrayName="optionsArray">
+        <div
+          *ngFor="let option of optionsArray.controls; let i = index"
+          class="mb-2"
+          [formGroupName]="i"
+        >
+          <label for="" class="mb-1">Option {{ i + 1 }}</label>
+          <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control option-text"
+                placeholder="Option Text"
+                formControlName="text"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                class="form-control option-value"
+                placeholder="Option Value"
+                formControlName="value"
+              />
+            </div>
+            <div class="col-2 d-flex align-items-center">
+              <mat-icon (click)="deleteOption(i)" class="option-delete"
+                >close</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-icon (click)="addOptionRow()" class="add-option">add_circle</mat-icon>
+  </div>
+</form>

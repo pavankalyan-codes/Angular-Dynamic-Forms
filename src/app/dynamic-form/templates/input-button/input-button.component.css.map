@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "input-button.component.scss"
+    ],
+    "names": [],
+    "file": "input-button.component.css"
+}
